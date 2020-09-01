@@ -35,7 +35,7 @@ class _AutofillState extends State<Autofill> {
   }
 
   Future<void> init() async {
-    if (!mounted) return;
+    if (!mounted || kIsWeb) return;
 
     String id = 'af_widget${++incrementingID}';
     Stream stream = await FlutterAutofill.registerWidget(context, id, _afFocus, _afKey, widget.autofillHints, widget.autofillType,
